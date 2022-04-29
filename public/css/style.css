@@ -1,0 +1,23 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100%;
+}
+
+a {
+  color: #00B7FF;
+}
+
+img {
+  margin: 5px;
+  width: 100%;
+  border: black 1px solid;
+}
+
+body > footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #424242;
+  font-size: small;
+  color: white;
+}
