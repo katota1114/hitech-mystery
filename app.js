@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var gameCheckRouter = require('./routes/gameCheck');
 
 var app = express();
 
@@ -17,10 +18,20 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+app.use(function(req, res, next) {
+  res.setHeader("X-Robots-Tag", "noindex");
+  next();
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
+app.use("/css", express.static(path.join(__dirname, "node_modules/bootstrap/dist/css")))
+app.use("/js", express.static(path.join(__dirname, "node_modules/bootstrap/dist/js")))
+app.use("/js", express.static(path.join(__dirname, "node_modules/jquery/dist")))
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/4d989bcb-2bc8-3df7-6598-5d7c43100abb', gameCheckRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
